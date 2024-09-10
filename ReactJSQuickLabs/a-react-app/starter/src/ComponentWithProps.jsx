@@ -23,4 +23,5 @@ ComponentWithProps.defaultProps = {
   content: "Content from defaults",
   number: 100,
 };
+
 export default ComponentWithProps;
