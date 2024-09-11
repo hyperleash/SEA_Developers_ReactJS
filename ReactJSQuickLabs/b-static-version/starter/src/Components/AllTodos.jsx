@@ -3,10 +3,10 @@ import "./css/AllTodos.css";
 
 import TodoModel from "./utils/Todo.model";
 import Todo from "./Todo";
-import sampleTodos from "../sampleTodos.json";
+import PropTypes from "prop-types";
 
-function AllTodos() {
-  const todos = sampleTodos.map((currentTodo) => {
+function AllTodos({ data }) {
+  const todos = data.todos.map((currentTodo) => {
     const todo = new TodoModel(
       currentTodo.todoDescription,
       currentTodo.todoDateCreated,
@@ -31,5 +31,18 @@ function AllTodos() {
     </div>
   );
 }
+
+AllTodos.propTypes = {
+  data: PropTypes.exact({
+    todos: PropTypes.arrayOf(
+      PropTypes.exact({
+        _id: PropTypes.string,
+        todoDescription: PropTypes.string,
+        todoDateCreated: PropTypes.string,
+        todoCompleted: PropTypes.bool,
+      })
+    ),
+  }),
+};
 
 export default AllTodos;
